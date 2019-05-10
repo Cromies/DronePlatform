@@ -1,0 +1,69 @@
+<headerElement></headerElement>
+<app-breadcrumb></app-breadcrumb>
+
+  <div class='flex-wrapper'>
+<div class="container-fluid table-style" >
+    <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2" style=" margin-left: auto; margin-right: auto; margin-top: 20px;">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    My Alert Settings
+                </div>
+            </div>
+            <div class="card-body">
+                <label class=" form-control-label">Name</label>
+                <p>{{name}}</p>
+                <label class=" form-control-label">Email</label>
+                <p>{{email}}</p>
+                <label class=" form-control-label">Mobile Phone</label>
+                <p>{{phone}}</p>
+                <label class=" form-control-label">Configure Alerts </label>
+            <div class="alert alert-success" *ngIf='complete'><i class="fas fa-check"></i>Your alerts have been successfully changed!</div>
+            <div *ngIf='!complete' class="form-check">
+                <div class="checkbox">
+                    <label for="checkbox1" class="form-check-label ">
+                        <input type="checkbox" id="checkbox1" name="e-alerts" [(ngModel)]="email_state"  class="form-check-input" >Email Alerts
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label for="checkbox2" class="form-check-label ">
+                        <input type="checkbox" id="checkbox2" name="t-alerts" [(ngModel)]="phone_state "  class="form-check-input"  > Text Alerts
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label for="checkbox3" class="form-check-label ">
+                        <input type="checkbox" id="checkbox3" name="l-alerts" [(ngModel)]=" location_state"  class="form-check-input" > Location Alerts
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label for="checkbox3" class="form-check-label ">
+                        <input type="checkbox" id="checkbox3" name="s-alerts"  [(ngModel)]="system_state" class="form-check-input"> System Status Alerts
+                    </label>
+                </div>
+
+            </div>
+
+                <!-- <h3 class="card-title">ALERT DELIVERY</h3>
+                <p>
+                    How would you like to recieve alerts<br>
+                    Email Alerts: {{emailState ? 'On' : 'Off'}}<br>
+                    Phone Alerts: {{phoneState ? 'On' : 'Off'}}<br>
+                </p>
+                <h3 class="card-title">ALERT TYPE</h3>
+                <p>
+                    Location Alerts: {{systemState ? 'On' : 'Off'}}<br>
+                    Basic Alerts: {{alerts ? 'On' : 'Off'}}<br>
+                </p> -->
+
+            </div>
+            <div class='card-footer'>
+                <button type="submit"  class="btn btn-primary btn-sm" (click)='onSubmit()' style="float: right">
+                   Save Alert Settings
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<footerElement></footerElement>
+</div>

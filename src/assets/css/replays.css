@@ -1,0 +1,14 @@
+agm-map {
+    height: 800px;
+}
+
+.label {
+    font-weight: 600;
+
+}
+.block {
+    padding-bottom: 20px;
+}
+.input-block {
+    padding-right: 10px;
+}

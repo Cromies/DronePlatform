@@ -1,0 +1,24 @@
+{
+  "name": "aero-api",
+  "version": "1.0.0",
+  "description": "api for aeroDefense",
+  "main": "app.js",
+  "scripts": {
+    "test": "\u001b[A\u001b[A\u001b[A\u001b[A\u001b[B\u001b[B\u001b[B\u001b[Becho \"\"\u001b[DHello!\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
+    "morgan": "^1.9.0",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.3",
+    "openssl": "^1.1.0",
+    "python-shell": "^0.5.0"
+  },
+  "devDependencies": {}
+}

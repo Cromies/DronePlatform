@@ -1,0 +1,42 @@
+<headerElement></headerElement>
+<app-breadcrumb></app-breadcrumb>
+<div class="flex-wrapper">
+<section class="container-fluid ">
+<div class="card " style="width:60%; margin-left: auto; margin-right: auto">
+  <div class="card-header">
+    <div class='card-title'>Edit Signal</div>
+  </div>
+  <div class="card-body card-block" [ngBusy]="busy">
+    <form (submit)='onSubmit(userForm.value)' #userForm='ngForm' class="form-horizontal">
+
+
+      <div class="row form-group">
+        <div class="col-12 col-md-9"><label for="hf-email" class=" form-control-label">MAC/FHID</label><br>
+            <span>{{mac_id}}</span>
+            <!-- <span class="help-block">Please enter your email</span> -->
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-12 col-md-9"><label for="hf-email" class=" form-control-label">Description</label><input type="text" id="hf-text" name="Description"  class="form-control" [(ngModel)] = 'Description'>
+            <!-- <span class="help-block">Please enter your email</span> -->
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-12 col-md-9"><label for="hf-date" class=" form-control-label">Expiration Date/Time</label><br>
+            <p>Date this signal will be automatically deleted from the whitelist.<p>
+                <input type="datetime-local" id="hf-date" name="expiration" class="form-control" [(ngModel)]='expiration'>
+            <!-- <span class="help-block">Please enter your email</span> -->
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-primary btn-sm" (click)='onSubmit(userForm.value)' style='float: right;'>
+     Save Changes
+    </button>
+  </div>
+</div>
+</section>
+<footerElement></footerElement>
+</div>

@@ -1,0 +1,14 @@
+<!-- <div class='toggle' data-toggle='toggle'>
+  <span [@toggle]='state' (click)='toggle(tester("test"))' class='toggle-item'>{{on_text}}</span>
+  {{state}}
+</div> -->
+<!-- <div class="toggle-group">
+  <label class="btn btn-primary toggle-on">On</label>
+  <label class="btn btn-default active toggle-off">Off</label>
+  <span class="toggle-handle btn btn-default"></span>
+</div> -->
+
+<div class="toggle">
+  <button [@toggle]='toggled == true ? "active" : "inactive"' [disabled] = '!toggled'  class='toggle-item' (click)='onAction(actionWhenOn, params)'><label>{{on_text}}</label></button>
+  <button [@toggle]='toggled == true ? "inactive" : "active"' [disabled] = 'toggled' class='toggle-item' (click)='onAction(actionWhenOff, params)'><label>{{off_text}}</label></button>
+</div>

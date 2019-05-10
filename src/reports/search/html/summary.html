@@ -1,0 +1,100 @@
+<app-breadcrumb></app-breadcrumb>
+
+<div class='flex-wrapper'>
+
+<div class="container-fluid table-style" >
+    <!-- <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2" style=" margin-left: auto; margin-right: auto; margin-top: 20px;"> -->
+
+        <div class="card" style='min-width: 650px;'>
+            <div class="card-header">
+                <div class="card-title">Incident Summary Search</div>
+                <csv-downloader  [data] = 'data' [headers]='["Deployment Name", "Incident Number", "Device ID", "Start Date/Time", "End Date/Time", "Start Latitude", "Start Longitude", "Start Section", "End Latitude", "End Longitude", "End Section", "Duration (seconds)"]' downloaderName = 'Download CSV' fileName={{fileName}} ></csv-downloader>
+        </div>
+
+        <div class="card-body" [ngBusy]='busy'>
+            <div class=" align-content-center">
+
+                <form (ngSubmit)='onSearch(dateForm.value)' class='form-horizontal' #dateForm='ngForm' name = 'model'>
+                    <span class="col col-md-6" >
+                    <div class='row form-group' style='  float: left;   width: 100%; font-size: 12px; position: relative; vertical-align: center;'>
+                        <div style=' display: inline-block; position: relative; padding: 10px;'>
+                            <label class='form-control-label' style='float: left; padding-right: 10px;' for='startDate'>Start Date</label>
+                            <input type='datetime-local' style='float: left; width: 250px;' id='startDate' name="startDate"  (change)="defaultStart=$event.target.value" step=1  [(ngModel)]='start' class='form-control' required />
+                        </div>
+                        <div style=' display: inline-block; position: relative; padding: 10px;'>
+                            <label  class='form-control-label' style='float: left; padding-right: 10px;'>End Date</label>
+                            <input type='datetime-local' style='float: left; width: 250px;' id='endDate' name="endDate" (change)="defaultEnd=$event.target.value"  step=1  [(ngModel)]='end' class='form-control' required />
+                            <button type="submit" style='margin-left: 20px; height: 39px; '  class="btn btn-primary btn-sm">Search</button>
+
+                        </div>
+                        <!-- <div style='  display: inline-block; position: relative; padding: 10px; '>
+                        </div> -->
+                    </div>
+                </span>
+                </form>
+                <!-- <div *ngIf="!data; else elseBlock" style='font-size: 12px; float: left; margin-top: 10px;'> No records Found!</div> -->
+
+                <div style='font-size: 12px; float: left; display: block;'>{{showResults(data)}}</div>
+                <pagination-controls style='float: right; font-size: 12px;' (pageChange)="p = $event" nextLabel = 'Next Page' previousLabel='Previous page'></pagination-controls>
+
+
+                <table class="table table-striped" >
+                                <thead>
+                                    <tr>
+                                        <th style="width: 16.66%">
+                                            Deployment
+                                        </th>
+                                        <th style="width: 5%">
+                                            Incident Number
+                                        </th>
+                                        <th style="width: 16.66%">
+                                            Device Name
+                                        </th>
+                                        <th style="width: 16.66%">
+                                            Start Date/Time
+                                        </th>
+                                        <th style="width: 16.66%">
+                                            End Date/Time
+                                        </th>
+                                        <th style="width: 5%">
+                                            Duaration (secs)
+                                        </th>
+                                        <th style="width: 16.66%">
+                                            Action
+                                        </th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of data | paginate : {itemsPerPage: 25, currentPage: p} ">
+                                        <td>{{item.DEPLOYMENT_NAME}}</td>
+                                        <td>{{item.INCIDENT_NUM}}</td>
+                                        <td>{{item.DEVICE_ID}}</td>
+                                        <td>{{item.FIRST_HEARD | date : 'medium'}}</td>
+                                        <td>{{item.LAST_HEARD  | date : 'medium'}}</td>
+                                        <td>{{item.DURATION}}</td>
+                                        <td><span><a class='action' (click)='onReplay(item)'>Replay</a> | <a class='action'  (click)="onTap(item)">Details</a></span></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="7">
+
+                                        <pagination-controls style='float: right' (pageChange)="p = $event"
+                                            nextLabel = 'Next Page'
+                                            previousLabel='Previous page'></pagination-controls >
+
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>            <!-- <div #elseBlock>
+                        <p> No incidents found.</p>
+            </div> -->
+        </div>
+        </div>
+        </div>
+    <!-- </div> -->
+</div>
+<footerElement></footerElement>
+
+</div>

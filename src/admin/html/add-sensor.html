@@ -1,0 +1,40 @@
+<headerElement></headerElement>
+
+<app-breadcrumb></app-breadcrumb>
+<div class="flex-wrapper">
+
+<section class="container-fluid ">
+<div class="card " style="width:60%; margin-left: auto; margin-right: auto">
+  <div class="card-header">
+    <div class='card-title'>Add Sensor</div>
+  </div>
+  <div class="card-body card-block">
+    <form #sensorForm='ngForm' (ngSubmit)='onSubmit(sensorForm.value)' name='model' class="form-horizontal">
+
+      <div class="row form-group">
+        <div class="col-5 col-md-9"><label for="hf-email" class=" form-control-label">Sensor ID</label><input type="text" maxlength=16 id="hf-text" name="id"  class="form-control" ngModel>
+            <!-- <span class="help-block">Please enter your email</span> -->
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-5 col-md-9"><label for="hf-email" class=" form-control-label">Sensor Name</label><input type="text" id="hf-text" maxlength=25 name="name"  class="form-control"  ngModel>
+            <!-- <span class="help-block">Please enter your email</span> -->
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-5 col-md-9"><label for="hf-date" class=" form-control-label">Sensor Location</label><br><span style='font-size: 12px; color: gray; '>   (e.g., 40.7121623,-74.0123165)</span><input type="text" id="hf-date" name="location" class="form-control" ngModel>
+            <!-- <span class="help-block">Please enter your email</span> -->
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-sm" style='float: right'>
+          Save Sensor
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+</section>
+<footerElement></footerElement>
+
+</div>

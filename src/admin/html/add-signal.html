@@ -1,0 +1,43 @@
+<headerElement></headerElement>
+<app-breadcrumb></app-breadcrumb>
+<div class="flex-wrapper">
+<section class="container-fluid ">
+<div class="card " style="width:60%; margin-left: auto; margin-right: auto">
+  <div class="card-header">
+    <div class='card-title'>Add Signal to Whitelist</div>
+  </div>
+  <div class="card-body card-block">
+      <div style="margin-top: 10px;" class='alert alert-danger' *ngIf='error'>{{err_message}}</div>
+
+    <form (submit)='onSubmit(userForm.value)' #userForm='ngForm' class="form-horizontal">
+
+
+      <div class="row form-group">
+        <div class="col-12 col-md-9"><label for="hf-email" class=" form-control-label">MAC/FHID</label><input type="text" id="hf-text" name="mac_id"  class="form-control" [(ngModel)]='mac_id'>
+            <!-- <span class="help-block">Please enter your email</span> -->
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-12 col-md-9"><label for="hf-email" class=" form-control-label">Description</label><input type="text" id="hf-text" name="Description"  class="form-control" [(ngModel)] = 'Description'>
+            <!-- <span class="help-block">Please enter your email</span> -->
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-12 col-md-9"><label for="hf-date" class=" form-control-label">Expiration Date/Time</label><br>
+            <p>Date this signal will be automatically deleted from the whitelist.<p>
+                <input type="datetime-local" id="hf-date" name="expiration" class="form-control" [(ngModel)]='expiration'>
+            <!-- <span class="help-block">Please enter your email</span> -->
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <div class="card-footer">
+    <button style='float: right;' class="btn btn-primary btn-sm" (click)='onSubmit(userForm.value)'>
+      Save Signal
+    </button>
+  </div>
+</div>
+</section>
+<footerElement></footerElement>
+</div>

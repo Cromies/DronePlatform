@@ -1,0 +1,61 @@
+<!--
+<section id="login-box">
+    <form class="login">
+    <fieldset>
+        <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    </fieldset>
+</form>
+</section> -->
+
+<div class='flex-wrapper'>
+  <img class="logo-img" src="assets\img\login-logo.png" alt="">
+  <img class="drone-img" src="assets\img\login-drone.png" alt="">
+<div class="sufee-login d-flex align-content-center flex-wrap" style=" font-size: 14px; border: 1px solid thin;" >
+    <div class="container">
+        <div class="login-content">
+            <div class="login-form">
+              <div class="login-logo align-content-center">
+                  <a href="index.html">
+                      <!-- <img class="align-content" src="assets\img\logo.png" alt=""> -->
+                      <span class='air-warden-logo'>AirWarden&trade;</span>
+                      <!-- <h2>Login</h2> -->
+                  </a><br>
+                  <span class='subtext'><p>Drone and Pilot Detection and Location System</p></span>
+              </div>
+
+              <div style="margin-top: 10px;" class='alert alert-danger' *ngIf='message'>{{message}}</div>
+
+                <form (ngSubmit)='login(loginForm.value)' #loginForm='ngForm' class='form-horizontal form-item' name='model'>
+                    <div class="form-group">
+                        <label class="form-control-label">Email Address</label>
+                        <input type="email" name='email' #email='ngModel' class="form-control" placeholder="Email" required ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label">Password</label>
+                        <input type="password" name='password' #password='ngModel' class="form-control" placeholder="Password" required ngModel>
+                    </div>
+
+                    <button type="submit" [disabled]='loginForm.invalid' class="btn btn-primary">Sign in</button>
+                    <div class="social-login-content">
+                        <div class="social-button">
+                            <!-- <button type="button" class="btn social facebook btn-flat btn-addon mb-3"><i class="ti-facebook"></i>Sign in with facebook</button>
+                            <button type="button" class="btn social twitter btn-flat btn-addon mt-2"><i class="ti-twitter"></i>Sign in with twitter</button> -->
+                        </div>
+                    </div>
+                    <div class="register-link m-t-15 text-center">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<footerElement></footerElement>
+</div>

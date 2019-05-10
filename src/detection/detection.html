@@ -1,0 +1,76 @@
+<headerElement></headerElement>
+<app-breadcrumb></app-breadcrumb>
+  <section class='status-bar' [@flash]='state' [style.background-color]='status.Color'>{{status.Message}}</section>
+  <div class="flex-wrapper">
+  <div class='container-map'>
+      <section id='map-box'>
+          <agm-map  [latitude] = 'lat'  [longitude] = 'lon' [zoom]=16 [panControl] = "true" [zoomControl] = "true" [mapTypeControl]="true" [fullscreenControl]="true" [mapTypeId] = "'satellite'">
+              <agm-polygon *ngFor='let path of paths'  [strokeColor]="'#083478'" [strokeWeight]="4" [paths]="path">
+              </agm-polygon>
+              <!-- <ng-container *ngFor='let drone of drones'>
+                  <agm-polyline *ngFor = 'let point of drone.points'>
+                      <agm-polyline-point [latitude] = 'point.LAT' [longitude]='point.LON'>
+                      </agm-polyline-point>
+                  </agm-polyline>
+              </ng-container> -->
+
+          </agm-map>
+
+      </section>
+      <section class="sidenav">
+          <div *ngIf='detecting' class='sub-item'>
+              <h3 style="color: #777777; text-align: center;">
+                  <span class="fas fa-spinner fa-spin" style="font-size: 48px;"></span>
+                    <br>
+                  Detecting
+              </h3>
+
+          </div>
+        <button class="dropdown-btn sidebar-title" data-toggle='dropdown' (click)='dropConfirmed = !dropConfirmed' style="color: #777777;">Threat Detected
+        </button>
+        <div class="dropdown-container" [collapse]="!dropConfirmed" >
+            <div class="item" *ngFor=" let confirmed of THREATS" >
+                <div class='sub-item'>
+                    <strong>{{confirmed.ID}} - <span style='color: #D53B3C;'>THREAT</span></strong><br>
+                    <p ><span style='color: #777777; '>Distance: </span>{{confirmed.DISTANCE}} yards&nbsp;&nbsp;&nbsp;<span style='color: #777777;'>Speed: </span>{{confirmed.SPEED}} mph<br>
+                        <span style='color: #777777;'>ETA: </span>{{confirmed.ETA}} sec <br>
+                        <span style='color: #777777;'>Start: </span>{{confirmed.FIRST_HEARD | date:'medium'}}<br>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <button class="dropdown-btn sidebar-title" data-toggle='dropThreat' (click)='dropThreat = !dropThreat' style="color: #777777;">Signal Of Interest
+        </button>
+        <div class="dropdown-container" [collapse]="!dropThreat" >
+            <div class="item" *ngFor=" let threats of POTENTIAL" >
+                <div class='sub-item'>
+                    <strong>{{threats.ID}} - <span style='color: #EE6D0B;'>ANALYZING</span></strong><br>
+                    <p>
+                        <span style='color: #777777;'> Start: </span>{{threats.FIRST_HEARD}}<br>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <button class="sidebar-title dropdown-btn " data-toggle='dropSensor' (click)='dropSensor = !dropSensor' style="color: #777777;">Sensors
+        </button>
+        <div class="dropdown-container" [collapse]="!dropSensor" >
+            <div class="item" *ngFor=" let sensor of SENSORS" >
+                <div class='sub-item' ><strong>{{sensor.NAME}} - </strong><span style='color: #777777;'>ID:</span> {{sensor.NODE_NAME}}<br>
+                    <p [style.color] = 'sensor.codex.color'><span class="fa fa-circle"></span>{{sensor.codex.code}}</p>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+  </div>
+  <footer class='footer-detection'>
+      <span style='float: left; '>© 2017 – 2018 AeroDefense | AeroDefense.tech</span>
+      <span style='float: right; '>AirWarden v2.0</span>
+  </footer>
+</div>
+
+  <!-- <footer style="height: 50px; width: 100%; float: left;">
+  fergrg
+</footer> -->

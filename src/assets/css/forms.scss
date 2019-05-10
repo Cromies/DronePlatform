@@ -1,0 +1,116 @@
+/* @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700'); */
+
+#login-box {
+    width:25em;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    padding: 0px;
+}
+
+#login-box .login {
+    padding: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000;
+
+}
+.form-item {
+
+  height: 60% !important;
+}
+
+#range {
+    padding: 5px;
+}
+#label {
+    padding: 5px;
+}
+
+#value {
+    margin: 5px 5px 10px 5px;
+}
+.login-form {
+    border-style: solid;
+    border-width: thin;
+    border-color: #aaaaaa;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    -webkit-box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.3);
+    box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.3);
+    /* margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 2em;
+
+    width: 37em; */
+
+}
+.drone-img {
+  top: 10px;
+  left: 20px;
+  position: absolute;
+  z-index: 1;
+}
+.logo-img {
+  bottom: 65px;
+  right: 40px;
+  position: absolute;
+}
+.login-logo {
+  margin-bottom: 15px;
+}
+  a {
+    text-decoration: none;
+    text-align: center;
+
+  }
+
+  .subtext{
+      color: rgba(0, 0, 0, 0.4);
+      font-size: 24px;
+  }
+  .air-warden-logo {
+      font-family: 'Saira Semi Condensed', sans-serif;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 36px;
+
+  }
+
+.login-content {
+    max-width: 540px;
+    margin: 8vh auto;
+    z-index: 100;
+    position: relative;
+}
+.login-form {
+  background: #ffffff;
+  padding: 30px 30px 20px;
+  border-radius: 2px;
+  height: 28rem;
+}
+.login-form h4 {
+  color: #878787;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.login-form .checkbox {
+  color: #878787;
+}
+.login-form .checkbox label {
+  text-transform: none;
+}
+.login-form .btn {
+  font-size: 14px;
+  border: 0px;
+  margin-top: 10px;
+}
+.login-form label {
+  color: #000;
+}
+.login-form label a {
+  color: #ff2e44;
+}

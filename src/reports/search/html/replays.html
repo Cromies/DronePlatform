@@ -1,0 +1,53 @@
+
+<app-breadcrumb></app-breadcrumb>
+<div class="container-fluid table-style" >
+    <!-- <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2" style=" margin-left: auto; margin-right: auto; margin-top: 20px;"> -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    Replay
+                </div>
+            </div>
+            <div class="card-body" >
+                <div class="col-md-12" style="padding: 5px;">
+                    <span class=' input-block'><span class='label'>Incident Number:</span> {{data.INCIDENT_NUM}}</span>
+                    <div class='block' style='font-size: 1em'>
+                        <span class=' input-block'><span class='label'>Deployment:</span> {{data.DEPLOYMENT_NAME}}</span>
+                        <span class=' input-block'><span class='label'>Duration:</span> {{data.DURATION}} seconds</span>
+                        <span class=' input-block'><span class='label'>Device ID:</span> {{data.DEVICE_ID}}</span>
+                        <br>
+                        <span class=' input-block'><span class='label'>First Detected:</span> {{first}}</span>
+                        <span class=' input-block'><span class='label'>Last Detected:</span> {{last}}</span>
+
+                    </div>
+                <!-- <button  class="btn btn-primary btn-sm" (click)='pause()' style="padding: 5px; margin-right: 5px;">
+                 <i class="fas fa-pause"></i>Pause
+                </button> -->
+
+                <button class="btn btn-primary btn-sm" (click)='reset()' style="padding: 5px 10px 5px 10px; margin-right: 10px;">
+                  <i class="fas fa-fast-backward"></i>Rewind
+                </button>
+                <button  class="btn btn-primary btn-sm" (click)='play()' style="padding: 5px 10px 5px 10px; margin-right: 10px;" [disabled]='playing'>
+                 <i class="fas fa-play"></i>Play
+                </button>
+
+                <button class="btn btn-primary btn-sm" (click)='forward()' style="padding: 5px 10px 5px 10px; margin-right: 10px;">
+                  Fast Forward<i class="fas fa-fast-forward"></i>
+                </button>
+
+                <!-- <span style='float: right;'><a href='' (click)='onTap(data)'><i class="fas fa-list-alt"></i>View Details</a></span> -->
+
+                <!-- <div class='row form-group' id='range' style='margin-left: 5px;'>
+                    <label class='form-control-label' style='padding: 15px 15px 0 0;'><strong>Speed</strong></label><input style='direction: rtl;' min='1' max='300' id='range' type='range' name='speed' [(ngModel)]='speed'>
+                    {{speed}}
+                </div> -->
+            </div>
+
+                <agm-map  [latitude] = 'lat'  [longitude] = 'lng' [zoom]=16 [panControl] = "true" [zoomControl] = "true" [mapTypeControl]="true" [fullscreenControl]="true" [mapTypeId] = "'satellite'">
+                    <agm-polygon *ngFor='let path of paths'  [strokeColor]="'#083478'" [strokeWeight]="4" [paths]="path">
+                    </agm-polygon>
+                </agm-map>
+            </div>
+        </div>
+    <!-- </div> -->
+</div>

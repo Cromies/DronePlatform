@@ -1,0 +1,78 @@
+<headerElement></headerElement>
+
+  <app-breadcrumb></app-breadcrumb>
+
+<div class="flex-wrapper">
+
+
+
+<div class="container-fluid table-style " >
+
+        <div class="card" >
+            <div class="card-header">
+                <div class="card-title">Device Statistics</div>
+                <csv-downloader  [data] = 'data' [headers]='["Deployment Name", "Device ID", "First Detected", "Last Detected", "Total Incidents", "Total Duration (sec)","Longest Duration (Sec)"]' downloaderName = 'Download CSV' fileName={{fileName}} ></csv-downloader>
+
+
+            </div>
+
+        <div class="card-body card-block">
+            <div class=" align-content-center card-body">
+                <span style='font-size: 12px;'>Displaying records {{25*p - 24}} - {{25*p}} of {{totalNum}}</span>
+                <pagination-controls style='float: right; font-size: 12px;' (pageChange)="p = $event" nextLabel = 'Next Page' previousLabel='Previous page'></pagination-controls>
+
+                <table class="table table-striped" >
+             <thead >
+             <tr>
+                 <th style="width: 10%">
+                     Deployment
+                 </th>
+                 <th style="width: 10%">
+                     Device ID
+                 </th>
+                 <th style="width: 15%">
+                     First Detected
+                 </th>
+                 <th style="width: 15%">
+                     Last Detected
+                 </th>
+                 <th style="width: 5%">
+                     Total Incidents
+                 </th>
+                 <th style="width: 5%">
+                     Total Duration(s)
+                 </th>
+                 <th style="width: 10%">
+                     Longest Duration
+                 </th>
+
+             </thead>
+             <tbody [ngBusy] = 'busy'>
+                 <tr *ngFor="let item of data | paginate : {itemsPerPage: 25, currentPage: p} ">
+                 <td>{{item.DEPLOYMENT_NAME}}</td>
+                 <td>{{item.DEVICE_ID}}</td>
+                 <td>{{item.FIRST_HEARD | date:'medium'}}</td>
+                 <td>{{item.LAST_HEARD | date:'medium'}}</td>
+                 <td>{{item.TOTAL_INCIDENTS}}</td>
+                 <td>{{item.TOTAL_DURATION}}</td>
+                 <td>{{item.LONGEST_DURATION}}</td>
+
+
+             </tr>
+             </tbody>
+             <tfoot>
+             <tr>
+                 <td colspan="7">
+                     <pagination-controls style='float: right; font-size: 12px;' (pageChange)="p = $event" nextLabel = 'Next Page' previousLabel='Previous page'></pagination-controls>
+
+                 </td>
+             </tr>
+             </tfoot>
+            </table>
+        </div>
+        </div>
+        </div>
+
+</div>
+<footerElement></footerElement>
+</div>

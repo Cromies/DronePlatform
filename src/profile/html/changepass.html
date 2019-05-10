@@ -1,0 +1,84 @@
+<headerElement></headerElement>
+<app-breadcrumb></app-breadcrumb>
+  <div class='flex-wrapper'>
+
+<div class="container-fluid table-style" >
+    <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2" style=" margin-left: auto; margin-right: auto; margin-top: 20px;">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    Change Password
+                </div>
+            </div>
+            <div class="card-body card-block">
+                <div *ngIf='all' class='alert alert-success'>Your password has been successfully changed!</div>
+                <form *ngIf='!all' #userForm="ngForm"   class="form-horizontal" name="model"  >
+
+
+                <div style="margin-top: 10px;" class='alert alert-danger' *ngIf='error_pass'>{{error_pass}}</div>
+
+                  <div class="row form-group">
+                    <div class="col-12 col-md-9">
+                        <label for="old" class=" form-control-label">Old Password</label>
+                        <input type="password" id="old" name="old"   class="form-control" [(ngModel)]='old' >
+                        <!-- <span class="help-block">Please enter your email</span> -->
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-12 col-md-9">
+                        <label for='pass' class=" form-control-label">New Password</label>
+                       <input type="password" id='pass'  name='pass' (keyup)='validatePass($event)' class="form-control" [(ngModel)] = 'pass'>
+                                               <!-- <span class="help-block">Please enter your email</span> -->
+                                               <div *ngIf='!matched || !special || !minLength || !lower_case || !upper_case || !numeric'>
+                                               <div syle='float: left; padding: 5px;'>
+                                               <p class='vp-bit'><span [style.color] = 'minLength ? "#e7e7e7" : "#0086E8"' class="fa fa-circle"></span>8 characters minimum</p>
+                                               <p class='vp-bit'><span [style.color] = 'special ? "#e7e7e7" : "#0086E8"' class="fa fa-circle"></span>Special character ($ % & # . , !) </p>
+                                               <p class='vp-bit'><span [style.color] = 'upper_case ? "#e7e7e7" : "#0086E8"' class="fa fa-circle"></span>Uppercase letter</p>
+
+                                               </div>
+                                               <div syle='float: left; padding: 5px;'>
+                                               <p class='vp-bit'><span [style.color] = 'lower_case ? "#e7e7e7" : "#0086E8"' class="fa fa-circle"></span>Lowercase letter</p>
+                                               <p class='vp-bit'><span [style.color] = 'numeric ? "#e7e7e7" : "#0086E8"' class="fa fa-circle"></span>Number</p>
+                                               <p class='vp-bit'><span [style.color] = 'matched ? "#e7e7e7" : "#0086E8"' class="fa fa-circle"></span>Confirm Password</p>
+
+                                               </div>
+
+                                              </div>
+                                               <div class="alert alert-success" style='text-align: center; margin-top: 5px;' *ngIf='matched && special && minLength && lower_case && upper_case && numeric'>
+                                                   <i class="fas fa-check"></i>Your password is secure and you're all set!
+                                               </div>
+                </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-12 col-md-9">
+                        <label for="confirm" class=" form-control-label">Confirm Password</label>
+                        <input type="password" id="confirm" name="confirm" (keyup)='matchPass($event)' class="form-control" [(ngModel)]='confirm' >
+                        <!-- <span class="help-block">Please enter your email</span> -->
+
+                    </div>
+                  </div>
+
+
+
+
+                  <!-- <option value=”2”>User Mgmt, Reports, Detection</option>
+                  <option value=”3”>Reports, Detection</option>
+                  <option value=”4”>Detection Only</option> -->
+
+
+
+                  <div class="card-footer"  style='text-align: right;'>
+                    <button (click)='onSubmit(userForm.value)'  class="btn btn-primary btn-sm" >
+                       Save Password
+                    </button>
+                    <!-- {{ data[0].USERID }} -->
+                  </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<footerElement></footerElement>
+</div>

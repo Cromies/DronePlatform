@@ -1,0 +1,147 @@
+
+<app-breadcrumb></app-breadcrumb>
+<div class="flex-wrapper">
+
+<section class="container-fluid ">
+<div class="card " style="width:60%; margin-left: auto; margin-right: auto">
+  <div class="card-header">
+    <div class="card-title">Add User</div>
+  </div>
+  <div class="card-body card-block">
+
+
+    <form (ngSubmit)="onSubmit(userForm.valid, userForm.value)" #userForm="ngForm"   class="form-horizontal" name="model"  >
+      <div class="row form-group">
+        <div class="col-12 col-md-9">
+            <div style="margin-top: 10px;" class='alert alert-danger' *ngIf='error_pass'>{{error_pass}}</div>
+            <div style="margin-top: 10px;" class='alert alert-danger' *ngIf='error_email'>{{error_email}}</div>
+
+            <label for="hf-text" class=" form-control-label">First Name</label>
+            <!-- <span style="color: #D53B3C">Reuired</span> -->
+            <input type="text" id="hf-text" name="first" required #firstName="ngModel"  class="form-control" ngModel >
+            <div style="margin-top: 10px;" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger"><strong>Warning:</strong> First name is required!</div>
+
+            <!-- <span class="help-block">Please enter your email</span> -->
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-12 col-md-9">
+            <label for="hf-email" class=" form-control-label">Last Name</label>
+            <input type="text" id="hf-text" name="last" required #lastName="ngModel" class="form-control" ngModel >
+            <div style="margin-top: 10px;" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger"><strong>Warning:</strong> Last name is required!</div>
+
+            <!-- <span class="help-block">Please enter your email</span> -->
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-12 col-md-9">
+            <label for="hf-email" class=" form-control-label">Mobile Phone</label>
+            <input type="text" id="hf-text" name="phone" #phone="ngModel" class="form-control" ngModel >
+            <div style="margin-top: 10px;" *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger"><strong>Warning:</strong> Phone number is required!</div>
+
+            <!-- <span class="help-block">Please enter your email</span> -->
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-12 col-md-9">
+
+            <label for="hf-email" class=" form-control-label">Email</label>
+            <input type="email" id="hf-text" name="email" email required #email="ngModel" class="form-control" ngModel >
+            <div style="margin-top: 10px;" *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger"><strong>Warning:</strong> A valid email address is required!</div>
+
+            <!-- <span class="help-block">Please enter your email</span> -->
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-12 col-md-9">
+            <label for='pass' class=" form-control-label">Password</label>
+            <input type="password" id='pass'  name='pass' (keyup)='validatePass($event)' class="form-control" [(ngModel)] = 'pass'>
+                                    <!-- <span class="help-block">Please enter your email</span> -->
+                                    <div *ngIf='!special || !minLength || !lower_case || !upper_case || !numeric || !matched'>
+                                    <div syle='float: left; padding: 5px;'>
+                                    <p class='vp-bit'><span [style.color] = 'minLength ? "#e7e7e7" : "#0086E8"' class="fa fa-circle"></span>8 characters minimum</p>
+                                    <p class='vp-bit'><span [style.color] = 'special ? "#e7e7e7" : "#0086E8"' class="fa fa-circle"></span>Special character ($ % & # . , !) </p>
+                                    <p class='vp-bit'><span [style.color] = 'upper_case ? "#e7e7e7" : "#0086E8"' class="fa fa-circle"></span>Uppercase letter</p>
+
+                                    </div>
+                                    <div syle='float: left; padding: 5px;'>
+                                    <p class='vp-bit'><span [style.color] = 'lower_case ? "#e7e7e7" : "#0086E8"' class="fa fa-circle"></span>Lowercase letter</p>
+                                    <p class='vp-bit'><span [style.color] = 'numeric ? "#e7e7e7" : "#0086E8"' class="fa fa-circle"></span>Number</p>
+                                    <p class='vp-bit'><span [style.color] = 'Matched ? "#e7e7e7" : "#0086E8"' class="fa fa-circle"></span>Confirm Password</p>
+
+                                    </div>
+
+                                   </div>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-12 col-md-9">
+            <label for="hf-email" class=" form-control-label">Confirm Password</label>
+            <input type="password" id="hf-text" name="pass2" (keyup)='matchPass($event)'  class="form-control" [(ngModel)] = 'pass2' >
+            <!-- <span class="help-block">Please enter your email</span> -->
+        </div>
+      </div>
+      <div class="row form-group">
+
+          <div class="col-12 col-md-9">
+              <label for="select" class=" form-control-label">Role</label>
+              <select  name="role" id="select" #role="ngModel" required class="form-control" ngModel>
+                  <option *ngFor='let role of roles' [value]='role.LEVEL'>{{role.ROLE_NAME}}</option>
+
+            </select>
+        </div>
+
+    </div>
+    <div class="row form-group">
+
+        <div class="col col-md-9">
+            <div class="col col-md-6">
+                <label  class=" form-control-label"><strong>Configure Alerts</strong></label>
+            </div>
+            <div *ngIf='!complete' class="form-check">
+                <div class="checkbox">
+                    <label for="checkbox1" class="form-check-label ">
+                        <input type="checkbox" id="checkbox1" name="e_alerts"  [(ngModel)]="email_state"  class="form-check-input" >Email Alerts
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label for="checkbox2" class="form-check-label ">
+                        <input type="checkbox" id="checkbox2" name="t_alerts" [(ngModel)]="phone_state "  class="form-check-input"  >Text Alerts
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label for="checkbox3" class="form-check-label ">
+                        <input type="checkbox" id="checkbox3" name="l_alerts"  [(ngModel)]=" location_state"  class="form-check-input" >Location Alerts
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label for="checkbox3" class="form-check-label ">
+                        <input type="checkbox" id="checkbox3" name="s_alerts"  [(ngModel)]="system_state" class="form-check-input">System Status Alerts
+                    </label>
+                </div>
+
+            </div>
+                            </div>
+                          </div>
+      <!-- <option value=”2”>User Mgmt, Reports, Detection</option>
+      <option value=”3”>Reports, Detection</option>
+      <option value=”4”>Detection Only</option> -->
+
+
+
+      <div class="card-footer">
+        <button type="submit"  class="btn btn-primary btn-sm" style="float: right;">
+           Save User
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+</section>
+<footerElement></footerElement>
+</div>

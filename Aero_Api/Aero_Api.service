@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+[Unit]
+Description=Aero_Api
+
+[Service]
+ExecStart=/var/www/html/Platform/Aero_api/app.js
+Restart=always
+User=nobody
+# Note RHEL/Fedora uses 'nobody', Debian/Ubuntu uses 'nogroup'
+Group=nobody
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/var/www/html/Platform/Aero_api/
+
+[Install]
+WantedBy=multi-user.target

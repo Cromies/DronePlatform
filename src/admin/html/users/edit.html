@@ -1,0 +1,109 @@
+
+<app-breadcrumb></app-breadcrumb>
+<div class="flex-wrapper">
+<section class="container-fluid ">
+<div class="card " style="width:60%; margin-left: auto; margin-right: auto">
+  <div class="card-header">
+    <div class="card-title">Edit User</div>
+  </div>
+  <div class="card-body card-block">
+
+
+    <form (ngSubmit)="onSubmit(userForm.value)" #userForm="ngForm"   class="form-horizontal" name="model"  >
+
+
+      <div class="row form-group">
+        <div class="col-12 col-md-9">
+            <label for="hf-email" class=" form-control-label">First Name</label>
+            <input type="text" id="hf-text" name="first"  class="form-control" required [(ngModel)]="first" >
+            <!-- <span class="help-block">Please enter your email</span> -->
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-12 col-md-9">
+            <label for="hf-email" class=" form-control-label">Last Name</label>
+            <input type="text" id="hf-text" name="last"  class="form-control" [(ngModel)]="last" >
+            <!-- <span class="help-block">Please enter your email</span> -->
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-12 col-md-9">
+            <label for="hf-email" class=" form-control-label">Mobile Phone</label>
+            <input type="text" id="hf-text" name="phone"  class="form-control" [(ngModel)]="phone" >
+            <!-- <span class="help-block">Please enter your email</span> -->
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-12 col-md-9">
+            <label for="hf-email" class=" form-control-label">Email</label>
+            <input type="email" id="hf-text" name="email" class="form-control" [(ngModel)]="email" >
+            <!-- <span class="help-block">Please enter your email</span> -->
+        </div>
+      </div>
+
+
+
+      <div class="row form-group">
+
+          <div class="col-12 col-md-9">
+              <label for="select" class=" form-control-label">Role</label>
+              <select  name="role" id="select" class="form-control" [(ngModel)]='role'>
+                  <ng-container *ngFor='let role of roles'>
+                      <option [value]='role.LEVEL' [attr.selected]='role.LEVEL === level ? true : null'>{{role.ROLE_NAME}}</option>
+                  </ng-container>
+
+            </select>
+        </div>
+
+    </div>
+    <div class="row form-group">
+
+        <div class="col col-md-9">
+                <label class=" form-control-label"><strong>Configure Alerts</strong></label>
+
+                <div class="form-check">
+                    <div class="checkbox">
+                        <label for="checkbox1" class="form-check-label ">
+                            <input type="checkbox" id="checkbox1" name="e_alerts"   class="form-check-input" [(ngModel)]='email_state'>Email Alerts
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="checkbox2" class="form-check-label ">
+                            <input type="checkbox" id="checkbox2" name="t_alerts"  class="form-check-input" [(ngModel)]='phone_state'> Text Alerts
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="checkbox3" class="form-check-label ">
+                            <input type="checkbox" id="checkbox3" name="l_alerts"  class="form-check-input" [(ngModel)]='location_state'> Location Alerts
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="checkbox3" class="form-check-label ">
+                            <input type="checkbox" id="checkbox3" name="s_alerts"  class="form-check-input" [(ngModel)]='system_state'> System Status Alerts
+                        </label>
+                    </div>
+
+                </div>
+                            </div>
+                          </div>
+      <!-- <option value=”2”>User Mgmt, Reports, Detection</option>
+      <option value=”3”>Reports, Detection</option>
+      <option value=”4”>Detection Only</option> -->
+
+
+
+      <div class="card-footer" style="text-align: right;">
+        <button type="submit"  class="btn btn-primary btn-sm" >
+           Save Changes
+        </button>
+        <!-- {{ data[0].USERID }} -->
+      </div>
+
+    </form>
+
+  </div>
+</div>
+</section>
+<footerElement></footerElement>
+</div>

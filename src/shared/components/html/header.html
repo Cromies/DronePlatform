@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light content-align-center">
+  <a class="navbar-brand" routerLink="/detection"><img class="align-content" src="assets\img\logo-mini.png" alt=""><span class='air-warden'>AirWarden&trade;</span></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"  aria-controls="navbarColor03" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse align-content-center" id="navbarColor03" [collapse] = "!isCollapsed" >
+    <ul class="navbar-nav mr-auto">
+      <li *ngIf='level <= 5'class="nav-item">
+        <a class="nav-link" routerLink="/detection"><div class="fas fa-crosshairs"></div>Detection</a>
+      </li>
+      <li *ngIf="hide" class="nav-item">
+        <a class="nav-link" routerLink="/dashboard"><div class="fas tachometer-alt"></div>Dashboard</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a *ngIf="(level <= 4) || (level == 6)"class="nav-link dropdown-toggle" data-toggle="dropdown" (mouseenter)="navReports = !navReports" (mouseleave)="navReports = !navReports"><div class="far fa-chart-bar"></div>Reports</a>
+        <ul class="navbar-nav mr-auto dropdown-menu" id="reports" [collapse] = "!navReports" (mouseenter)="navReports = !navReports" (mouseleave)="navReports = !navReports">
+            <li class="nav-item dropdown-item"><a class="nav-link" routerLink="/incident-search/"><div class="fas fa-search"></div>Incident Search</a></li>
+            <li class="nav-item dropdown-item"><a class="nav-link" routerLink="/device-stats/"><div class="fas fa-table"></div>Device Stats</a></li>
+        </ul>
+      </li>
+      <li *ngIf='level <=3' class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle"  data-toggle="dropdown"  (mouseenter)="navSettings = !navSettings" (mouseleave)="navSettings = !navSettings"><div class="fas fa-cogs"></div>Admin Settings</a>
+        <ul class="navbar-nav mr-auto dropdown-menu" id="admin" [collapse] = "!navSettings" (mouseenter)="navSettings = !navSettings" (mouseleave)="navSettings = !navSettings">
+            <li *ngIf='level <=2' class="nav-item dropdown-item"><a class="nav-link" routerLink="/admin/settings/sensor"><div class="fas fa-rss"></div>Sensors</a></li>
+            <li *ngIf='level <=2' class="nav-item dropdown-item"><a class="nav-link" routerLink="/admin/settings/system"><div class="fas fa-sliders-h"></div>System Settings</a></li>
+            <li *ngIf='level <=2' class="nav-item dropdown-item"><a class="nav-link" routerLink="/admin/settings/whitelist"><div class="fas fa-list-ul"></div>Whitelisted Signals</a></li>
+            <li *ngIf='level <=2' class="nav-item dropdown-item"><a class="nav-link" routerLink="/admin/settings/signal"><div class="fas fa-signal"></div>Signal Strength</a></li>
+            <li *ngIf='level <=2' class="nav-item dropdown-item"><a class="nav-link" routerLink="/admin/settings/services"><div class="fas fa-cog"></div>Service Settings</a></li>
+
+            <li  class="nav-item dropdown-item"><a class="nav-link" routerLink="/admin/settings/users"><div class="fas fa-users"></div>Users</a></li>
+
+        </ul>
+      </li>
+      <li *ngIf='hide' class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle"  (mouseenter)="navDeploy = !navDeploy" (mouseleave)="navDeploy = !navDeploy"><div class="fas fas-map-marker"></div>Deployment</a>
+        <ul class="navbar-nav mr-auto dropdown-menu" id="deployment" [collapse] = "!navDeploy" (mouseenter)="navDeploy = !navDeploy" (mouseleave)="navDeploy = !navDeploy">
+            <li class="nav-item dropdown-item"><a class="nav-link" routerLink=""><div class="fas fas-map-marker"></div>Deployment 1</a></li>
+            <li class="nav-item dropdown-item"><a class="nav-link" routerLink=""><div class="fas fas-map-marker"></div>Deployment 2</a></li>
+            <li class="nav-item dropdown-item"><a class="nav-link" routerLink=""><div class="fas fas-map-marker"></div>Deployment 3</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="form-inline my-2 my-lg-0 nav-item dropdown" style="padding-right: 100px;">
+        <a class="nav-link dropdown-toggle"  (mouseenter)="userProfile = !userProfile" (mouseleave)="userProfile = !userProfile"><div class="fas fa-user"></div>{{username}}</a>
+        <ul class="navbar-nav mr-auto dropdown-menu"  id="profile" [collapse] = "!userProfile" (mouseenter)="userProfile = !userProfile" (mouseleave)="userProfile = !userProfile">
+            <li class="nav-item dropdown-item"><a class="nav-link" routerLink="/user"><div class="fas fa-user-edit"></div>My Alert Settings</a></li>
+            <li class="nav-item dropdown-item"><a class="nav-link" routerLink="/user/change-pass"><div class="fas fa-key"></div>Change Password</a></li>
+            <li class="nav-item dropdown-item"><a class="nav-link" (click)="logout()"><div class="fas fa-sign-out-alt"></div>Log Out</a></li>
+
+        </ul>
+    </div>
+  </div>
+</nav>

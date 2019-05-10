@@ -1,0 +1,86 @@
+<app-breadcrumb></app-breadcrumb>
+<div class="flex-wrapper">
+
+<div class="container-fluid table-style " >
+
+        <div class="card" [ngBusy] = "busy">
+            <div class="card-header">
+                <div class="card-title">Users</div>
+                <button type="submit" class="btn btn-primary btn-sm" routerLink="../add-user" style="float: right; text-align: center;" >
+                        Add User
+                </button>
+
+            </div>
+
+        <div class="card-body card-block">
+            <div class=" align-content-center card-body">
+            <table  id="bootstrap-data-table" class="table table-striped table-bordered" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable"
+             [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+             <thead >
+             <tr>
+                 <th style="width: 15%">
+                     <mfDefaultSorter by="name">Name</mfDefaultSorter>
+                 </th>
+                 <th style="width: 15%">
+                     <mfDefaultSorter by="email">Email</mfDefaultSorter>
+                 </th>
+                 <th style="width: 10%">
+                     <mfDefaultSorter by="phone">Mobile Phone</mfDefaultSorter>
+                 </th>
+                 <th style="width: 5%">
+                     <mfDefaultSorter by="e-alerts">Email Alerts</mfDefaultSorter>
+                 </th>
+                 <th style="width: 5%">
+                     <mfDefaultSorter by="t-alerts">Text Alerts</mfDefaultSorter>
+                 </th>
+                 <th style="width: 5%">
+                     <mfDefaultSorter by="l-alerts">Location Alerts</mfDefaultSorter>
+                 </th>
+                 <th style="width: 5%">
+                     <mfDefaultSorter by="l-alerts">System Alerts</mfDefaultSorter>
+                 </th>
+
+                 <th style="width: 5%">
+                     <mfDefaultSorter by="Role">Role</mfDefaultSorter>
+                 </th>
+                 <th style="width: 20%">
+                     <mfDefaultSorter by="l-login">Last Login</mfDefaultSorter>
+                 </th>
+                 <th style="width: 40%">
+                     <mfDefaultSorter by="action">Action</mfDefaultSorter>
+                 </th>
+
+             </thead>
+             <tbody>
+             <tr *ngFor="let item of mf.data" >
+                 <td>{{item.FIRST_NAME }} {{item.LAST_NAME }}</td>
+                 <td>{{item.EMAIL}}</td>
+                 <td>{{item.PHONE}}</td>
+                 <td>{{item.EMAILSTATE  ? 'On' : 'Off'}}</td>
+                 <td>{{item.PHONESTATE  ? 'On' : 'Off'}}</td>
+                 <td>{{item.LOCATIONSTATE ? 'On' : 'Off'}}</td>
+                 <td>{{item.SYSTEMSTATE ? 'On' : 'Off'}}</td>
+                 <td>{{item.ROLE_NAME}}</td>
+                 <td>{{item.LASTLOGIN | date: 'medium'}}</td>
+                 <td ><span *ngIf='item.LEVEL >= level'><button  class="btn btn-primary btn-sm" [disabled]="item.LEVEL < level" [routerLink]="['../edit-user/', item.USERID]">Edit</button>
+                      <!-- | <button [disabled]="item.LEVEL < level" class="btn btn-sm">Deactivate</button> -->
+                  </span></td>
+
+             </tr>
+             </tbody>
+             <tfoot>
+             <!-- <tr>
+                 <td colspan="5">
+                     <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                 </td>
+             </tr> -->
+             </tfoot>
+
+            </table>
+        </div>
+        </div>
+        </div>
+
+</div>
+<footerElement></footerElement>
+</div>

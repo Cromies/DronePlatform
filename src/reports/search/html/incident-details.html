@@ -1,0 +1,63 @@
+<app-breadcrumb></app-breadcrumb>
+<div class="container-fluid table-style" >
+    <!-- <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2" style=" margin-left: auto; margin-right: auto; margin-top: 20px;"> -->
+        <div class="card" >
+            <div class="card-header" width="100%">
+                <div class="card-title">
+                    Incident Details
+                </div >
+                <strong>Incident Number</strong>: {{data.INCIDENT_NUM}}
+                <br>
+                <strong>Device ID</strong>: {{data.DEVICE_ID}}
+                <br>
+                <strong>First Detected</strong>: {{this.first}}
+                <br>
+                <strong>Last Detected</strong>: {{this.last}}
+                <csv-downloader  [data] = "results" [headers] = '["Deployment", "Device ID", "Time", "Latitude", "Longitude", "Section"]' downloaderName = 'Download CSV' fileName={{fileName}}  ></csv-downloader>
+                <button class="btn btn-primary btn-sm" style = 'float: right; margin-right: 5px;'(click)='onReplay(data)' >Replay</button>
+            </div>
+            <div class="card-body" [ngBusy] = 'busy'>
+                <span style='font-size: 12px;'>Displaying records {{25*p - 24}} - {{25*p}} of {{totalNum}}</span>
+                <pagination-controls style='float: right; font-size: 12px;' (pageChange)="p = $event" nextLabel = 'Next Page' previousLabel='Previous page'></pagination-controls>
+
+                <table  id="bootstrap-data-table" class="table table-striped table-bordered">
+
+                 <thead >
+                <tr>
+                 <tr>
+                     <th style="width: 16.66%">
+                        Timestamp
+                     </th>
+                     <th style="width: 16.66%">
+                         Latitude
+                     </th>
+                     <th style="width: 16.66%">
+                         Longitude
+                     </th>
+                 </tr>
+                 </thead>
+                 <tbody >
+                     <tr *ngFor="let item of results | paginate : {itemsPerPage: 25, currentPage: p} ">
+                     <td>{{item.TIME | date:'medium'}}</td>
+                     <td>{{item.LAT}}</td>
+                     <td>{{item.LON}}</td>
+                 </tr>
+                 </tbody>
+                 <tfoot>
+                 <tr>
+
+                     <td colspan="7">
+                         <pagination-controls style='float: right; font-size: 12px;' (pageChange)="p = $event" nextLabel = 'Next Page' previousLabel='Previous page'></pagination-controls>
+
+                     </td>
+                 </tr>
+                 </tfoot>
+
+                </table>
+                <!-- <div #elseBlock>
+                    No incident logs avilable.
+                </div> -->
+            </div>
+        </div>
+    <!-- </div> -->
+</div>

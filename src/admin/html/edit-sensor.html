@@ -1,0 +1,148 @@
+<headerElement></headerElement>
+<app-breadcrumb></app-breadcrumb>
+<div class="flex-wrapper">
+<section [ngBusy]='busy' class="container-fluid ">
+<div  class="card " style="width:60%; margin-left: auto; margin-right: auto">
+  <div class="card-header">
+    <div class='card-title'>Edit Sensor</div>
+  </div>
+  <form #sensorForm='ngForm'  name='model' class="form-horizontal">
+  <div class="card-body card-block">
+        <div class='form-left' style="width: 50%; float: left; position: relative;">
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">Sensor ID</label><br> {{sensor_id}}
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">Sensor Name</label><input type="text" id="field" name="name" class="form-control" [(ngModel)]='name'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">Location</label><input type="text" id="field" name="location" class="form-control" [(ngModel)]='location'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label"> Gain (0-76) </label><input type="number" id="field" name="gain" class="form-control" [(ngModel)]='gain'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label"> Sweep time 1 (>0.1) </label><input type="number" id="field" name="time_fhss" class="form-control" [(ngModel)]='time_fhss' >
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label"> Sweep time 2 (>0.1) </label><input type="number" id="field" name="time_video" class="form-control" [(ngModel)]='time_video'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label"> Threshold 1 (known)</label><input type="number" id="field" name="track_thres_fhss" class="form-control" [(ngModel)]='track_thres_fhss'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">Threshold 2 (unknown)</label><input type="number" id="field" name="noise_thres_fhss" class="form-control" [(ngModel)]='noise_thres_fhss' >
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">Threshold 3 (900Mhz)</label><input type="number" id="field" name="thres_fhss_900" class="form-control" [(ngModel)]='thres_fhss_900'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">Threshold 4 (400Mhz)</label><input type="number" id="field" name="thres_fhss_400" class="form-control" [(ngModel)]='thres_fhss_400'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">Duty rate threshold (video 2.4Ghz)</label><input type="number" id="field" name="report_thres_24" class="form-control" [(ngModel)]='report_thres_24' >
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">Duty rate threshold (video 5.8Ghz)</label><input type="number" id="field" name="report_thres_58" class="form-control" [(ngModel)]='report_thres_58'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">Duty rate threshold (video 900Mhz)</label><input type="number" id="field" name="report_thres_900" class="form-control" [(ngModel)]='report_thres_900'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+        </div>
+        <div class='form-left' style="width: 50%; float: left; position: relative;">
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">BW threshold (video 2.4Ghz)</label><input type="number" id="field" name="bw_thres_24" class="form-control" [(ngModel)]='bw_thres_24'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">BW threshold (video 5.8Ghz)</label><input type="number" id="field" name="bw_thres_58" class="form-control" [(ngModel)]='bw_thres_58'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">BW threshold (video 900Mhz)</label><input type="number" id="field" name="bw_thres_900" class="form-control" [(ngModel)]='bw_thres_900'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">Start channel (2.4Ghz)</label><input type="number" id="field" name="sweep_start_24" class="form-control" [(ngModel)]='sweep_start_24'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">Stop channel (2.4Ghz)</label><input type="number" id="field" name="sweep_stop_24" class="form-control" [(ngModel)]='sweep_stop_24'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">Start channel (5.8Ghz)</label><input type="number" id="field" name="sweep_start_58" class="form-control" [(ngModel)]='sweep_start_58'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">Stop channel (5.8Ghz)</label><input type="number" id="field" name="sweep_stop_58" class="form-control" [(ngModel)]='sweep_stop_58'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">Start channel (900Mhz)</label><input type="number" id="field" name="sweep_start_900" class="form-control" [(ngModel)]='sweep_start_900'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">Stop channel (900Mhz)</label><input type="number" id="field" name="sweep_stop_900" class="form-control" [(ngModel)]='sweep_stop_900'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-5 col-md-9"><label for="field" class=" form-control-label">Sweep step (video)</label><input type="number" id="field" name="sweep_step" class="form-control" [(ngModel)]='sweep_step'>
+                  <!-- <span class="help-block">Please enter your email</span> -->
+              </div>
+            </div>
+
+        </div>
+  </div>
+  <div class="card-footer" style="float: left; width: 100%;" >
+      <button (click)='onSubmit(sensorForm.value)' style='float: right; margin: 10px;' class="btn btn-primary btn-sm">
+        Save Changes
+      </button>
+
+    <button (click)='onReset()'  class="btn btn-secondary btn-sm" style='float: right; margin: 10px;'>
+      Reset to default values
+    </button>
+
+  </div>
+
+</form>
+
+</div>
+</section>
+<footerElement></footerElement>
+</div>

@@ -1,0 +1,126 @@
+.sidenav {
+    background-color: #f4f4f4;
+
+    height: 100%;
+    width: 25%;
+    position: absolute;
+    z-index: 1;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-top: 0px;
+    right: 0;
+    margin-bottom: 35px;
+}
+#map-box{
+    height: 100%;
+    width: 75% !important;
+    left: 0;
+    position: absolute !important;
+
+
+}
+.container-map {
+    clear: both;
+    overflow: visible;
+    height: 100%;
+
+}
+agm-map {
+    height: 100%;
+    width: 100% ;
+    position: relative;
+    float: left;
+    /* overflow: visible; */
+    margin-bottom: 35px;
+
+}
+.sidebar-title {
+    text-decoration: none;
+    padding: 6px 8px 6px 16px;
+    font-weight: 600;
+    font-size: .2em;
+    display: block;
+    text-align: left;
+    background-color: #FFF;
+    /* border-bottom: #8c8c8c; */
+    border-bottom-style: dashed;
+    border-bottom-width: thin;
+    border-bottom-color: #dadada;
+
+
+}
+
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 1.2em;
+  color: #818181;
+  display: block;
+  border: none;
+  background-color:  #f4f4f4;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  border-bottom-style: dashed;
+  border-bottom-width: thin;
+  border-bottom-color: #dadada;
+
+}
+.dropdown-btn:active, .dropdown-btn:focus {
+    outline: none;
+
+    text-decoration: none;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 500px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+
+.item {
+    position: relative !important;
+    background-color: #e8e8e8;
+    height: 100%;
+    width: 100%;
+    z-index: -1001;
+
+
+}
+.sub-item {
+    z-index: -1001;
+    padding-top: 10px;
+    padding-left: 16px;
+    background-color: #fcfcfc;
+    float: left;
+    border-bottom-style: dashed;
+    border-bottom-width: thin;
+    border-bottom-color: #CCC;
+    width: 100%;
+
+}
+.sub-item p {
+    font-size: 16px;
+}
+
+
+.status-bar {
+    padding: .7em;
+    position: relative;
+    text-align-last:center;
+
+    color: #FFF;
+    font-weight: 600;
+    width: 100%;
+}

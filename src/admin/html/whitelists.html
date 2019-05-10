@@ -1,0 +1,81 @@
+<headerElement></headerElement>
+<app-breadcrumb></app-breadcrumb>
+<div class="flex-wrapper">
+<div class="container-fluid table-style" >
+    <!-- <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2" style=" margin-left: auto; margin-right: auto; margin-top: 20px;"> -->
+        <div class="card" >
+            <div class="card-header">
+                <div class="card-title">
+                    Whitelisted Signals
+                </div>
+                <span class='prim-instruction' style='width: 100%;'>
+                  Signals in this list will be ignored by the sensors if their Status is set to 'On'. This means they will not display in the Detection Command Console.
+                  <br><br>Click the toggle button in the Status column to turn whitelisting On or Off for each signal.
+                </span>
+                <button type="submit" class="btn btn-primary btn-sm" [routerLink]='["../add-signal"]' style="float: right;">
+                  Add Signal
+                </button>
+
+            </div>
+            <div class="card-body" [ngBusy]="busy">
+                <table  id="bootstrap-data-table" class="table table-striped table-bordered">
+
+                 <thead >
+                <tr>
+                 <tr>
+                     <th style="width: 16.66%">
+                        MAC/FHID
+                     </th>
+                     <th style="width: 16.66%">
+                         Description
+                     </th>
+                     <th style="width: 16.66%">
+                         Expiration Date
+                     </th>
+                     <th style="width: 16.66%">
+                         Status
+                     </th>
+
+                     <th style="width: 16.66%">
+                         Action
+                     </th>
+
+                 </tr>
+                 </thead>
+                 <tbody >
+                     <tr *ngFor="let item of data | paginate : {itemsPerPage: 25, currentPage: p} ">
+                         <td>{{item.MAC}}</td>
+                         <td>{{item.NAME}}</td>
+                         <td>{{item.EXPIRATION | date:"medium"}}</td>
+                         <td>
+                             <!-- <button type="submit" class="btn btn-primary btn-sm" (click)='onToggle(item.status, item.MAC)'>
+                               {{ item.status ? 'Active' : 'Disabled'}}
+                             </button> -->
+                             <toggle-switch [actionWhenOff] = 'off.bind(this)' [toggled] = 'item.status' [actionWhenOn] = 'on.bind(this)' [params]='item.MAC' on_text='On' off_text='Off'></toggle-switch>
+                             <span *ngIf ='level == 0'>| <a  class='action'[routerLink]="['../edit-sensor/', item.NODE_NAME]">EDIT</a></span>
+
+                         </td>
+                         <td><span><button class="btn btn-primary btn-sm" style='margin-right: 5px' [routerLink]='["../edit-signal", item]'>Edit</button>  <button class="btn btn-primary btn-sm" (click)='onDelete(item.MAC)'>Delete</button></span></td>
+                 </tr>
+                 </tbody>
+                 <tfoot>
+                 <tr>
+
+                     <td *ngIf='data != undefined && data.length > 0' colspan="7">
+                         <pagination-controls style='float: right; font-size: 12px;' (pageChange)="p = $event" nextLabel = 'Next Page' previousLabel='Previous page'></pagination-controls>
+
+                     </td>
+                     <td *ngIf='data == undefined || data.length == 0' colspan="7">
+                         There are no whitelisted signals. To prevent a signal from being detected, click Add Signal.
+                     </td>
+                 </tr>
+                 </tfoot>
+
+                </table>
+
+            </div>
+        </div>
+    <!-- </div> -->
+</div>
+<footerElement></footerElement>
+</div>

@@ -1,0 +1,136 @@
+<headerElement></headerElement>
+<app-breadcrumb></app-breadcrumb>
+<div class="flex-wrapper">
+<div class="container-fluid table-style" >
+    <!-- <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2" style=" margin-left: auto; margin-right: auto; margin-top: 20px;"> -->
+        <div class="card" [ngBusy]='busy'>
+            <div class="card-header">
+                <div class="card-title">
+                    System Settings
+                </div>
+            </div>
+            <div class="card-body">
+                <form #settingsForm='ngForm'  class='form-horizontal' name='model'>
+                    <div class='row form-group' id='range'>
+                        <label class='form-control-label'  id='label'>CLEAN CONFIRMED</label>
+                        <input type='range' min='5' max='120' name='confirmed' [(ngModel)]='cleanConfirmed'  value={{cleanConfirmed}} />
+                        <span id='value'>{{cleanConfirmed}}</span>
+                    </div>
+                    <div class='row form-group'  id='range'>
+                        <label class='form-control-label'  id='label'>CLEAN THREAT</label>
+                        <input type='range' min='5' max='120' name='threat' [(ngModel)] = 'cleanThreat' value={{cleanThreat}}/>
+                        <span id='value'>{{cleanThreat}}</span>
+
+                    </div>
+                    <div class='row form-group'  id='range'>
+                        <label class='form-control-label'  id='label'>UPDATE STATUS</label>
+                        <input type='range' min='5' max='120' name='status' [(ngModel)] = 'updateStatus' value={{updateStatus}}/>
+                        <span id='value'>{{updateStatus}}</span>
+
+                    </div>
+                    <div class='row form-group'  id='range'>
+                        <label class='form-control-label'  id='label'>CLEAN CURRENT</label>
+                        <input type='range' min='5' max='120'  name='current' [(ngModel)] = 'cleanCurrent' value={{cleanCurrent}}/>
+                        <span id='value'>{{cleanCurrent}}</span>
+
+                    </div>
+                    <div class='row form-group'  id='range'>
+                        <label class='form-control-label'  id='label'>CLEAN NODES</label>
+                        <input type='range' min='5' max='120' name='nodes' [(ngModel)] = 'cleanNodes' value={{cleanNodes}}/>
+                        <span id='value'>{{cleanNodes}}</span>
+
+                    </div>
+                    <div class='row form-group'  id='range'>
+                        <label class='form-control-label'  id='label'>CHECK HB</label>
+                        <input type='range' min='120' max='600' name='checkHb' [(ngModel)] ='checkHB' value={{checkHB}}/>
+                        <span id='value'>{{checkHB}}</span>
+
+                    </div>
+                    <div class='row form-group'  id='range'>
+                        <label class='form-control-label'  id='label'>TIME FH</label>
+                        <input type='range' min='5' max='600' name='timeFh' [(ngModel)] = 'timeFH' value={{timeFH}}/>
+                        <span id='value'>{{timeFH}}</span>
+
+                    </div>
+                    <div class='row form-group'  id='range'>
+                        <label class='form-control-label'  id='label'>TIME WF</label>
+                        <input type='range' min='5' max='600' name='timeWf' [(ngModel)] = 'timeWF' value={{timeWF}}/>
+                        <span id='value'>{{timeWF}}</span>
+
+                    </div>
+                    <div class='row form-group'  id='range'>
+                        <label class='form-control-label'  id='label'>TIME SLEEP</label>
+                        <input type='range' min='1' max='10' name='time_sleep' [(ngModel)] = 'timeSleep' value={{timeSleep}}/>
+                        <span id='value'>{{timeSleep}}</span>
+
+                    </div>
+                    <div class='row form-group'  id='range'>
+                        <label class='form-control-label'  id='label'>LENGTH FILTER FHSS</label>
+                        <input type='range' min='1' max='300' name='lengthFilter_fhss' [(ngModel)] = 'lengthFliterFHSS' value={{lengthFliterFHSS}}/>
+                        <span id='value'>{{lengthFliterFHSS}}</span>
+
+                    </div>
+                    <div class='row form-group'  id='range'>
+                        <label class='form-control-label'  id='label'>LENGTH FILTER VIDEO</label>
+                        <input type='range' min='1' max='120' name='lengthFilter_video' [(ngModel)] = 'lengthFilterVideo' value={{lengthFilterVideo}}/>
+                        <span id='value'>{{lengthFilterVideo}}</span>
+
+                    </div>
+                    <div class='row form-group'  id='range'>
+                        <label class='form-control-label'  id='label'>NUMBER DETECT FHSS</label>
+                        <input type='range' min='1' max='10' name='numberDetect_FHSS' [(ngModel)] = 'numberDetectFHSS' value={{numberDetectFHSS}}/>
+                        <span id='value'>{{numberDetectFHSS}}</span>
+
+                    </div>
+                    <div class='row form-group'  id='range'>
+                        <label class='form-control-label'  id='label'>NUMBER DETECT VIDEO</label>
+                        <input type='range' min='1' max='10' name='numberDetect_video' [(ngModel)] = 'numberDetectVideo' value={{numberDetectVideo}}/>
+                        <span id='value'>{{numberDetectVideo}}</span>
+
+                    </div>
+                    <div class='row form-group'  id='range'>
+                        <label class='form-control-label'  id='label'>TAG ALERT</label>
+                        <input type='range' min='0' max='10' name='tag_alert' [(ngModel)] = 'tagAlert' value={{tagAlert}}/>
+                        <span id='value'>{{tagAlert}}</span>
+
+                    </div>
+                    <div class='row form-group'  id='range'>
+                        <label class='form-control-label'  id='label'>TAG TRACK</label>
+                        <input type='range' min='0' max='10' name='tag_track' [(ngModel)] = 'tagTrack' value={{tagTrack}}/>
+                        <span id='value'>{{tagTrack}}</span>
+
+                    </div>
+                    <div class='row form-group'  id='range'>
+                        <label class='form-control-label'  id='label'>TIME ALERT</label>
+                        <input type='range' min='0' max='60' name = 'time_alert' [(ngModel)] = 'timeAlert' value={{timeAlert}}/>
+                        <span id='value'>{{timeAlert}}</span>
+
+                    </div>
+                    <div class='row form-group'  id='range'>
+                        <label class='form-control-label'  id='label'>TIME TRACK</label>
+                        <input type='range' min='0' max='300' name='time_track' [(ngModel)] = 'timeTrack' value={{timeTrack}}/>
+                        <span id='value'>{{timeTrack}}</span>
+
+                    </div>
+                    <div class='row form-group'  id='range'>
+                        <label class='form-control-label' id='label'>UPDATE DIST</label>
+                        <input type='range' min='10' max='300' name='update_dist' [(ngModel)] = 'updateDist' value={{updateDist}}/>
+                        <span id='value'>{{updateDist}}</span>
+
+                    </div>
+
+
+                </form>
+                <button style='float: right; margin: 5px;' (click)='onSubmit(settingsForm.value)' class="btn btn-primary btn-sm">
+                  Save Changes
+                </button>
+                <button style='float: right;  margin: 5px;' (click)='onReset()' class="btn btn-secondary btn-sm">
+                  Reset to default values
+                </button>
+
+            </div>
+        </div>
+    <!-- </div> -->
+</div>
+<footerElement></footerElement>
+</div>

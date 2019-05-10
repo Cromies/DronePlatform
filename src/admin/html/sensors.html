@@ -1,0 +1,86 @@
+
+<headerElement></headerElement>
+
+  <app-breadcrumb></app-breadcrumb>
+<div class="flex-wrapper">
+
+
+<div class='container-fluid table-style' [ngBusy] = 'busy'>
+    <div class="card" >
+        <div class="card-header">
+            <div class="card-title">Sensors</div>
+
+            <button  style='float: right' routerLink="../add-sensor" class="btn btn-primary btn-sm">
+               Add Sensor
+            </button>
+                </div>
+
+    <div class="card-body card-block">
+        <div class=" align-content-center card-body">
+            <span style='font-size: 12px;'>Displaying records {{25*p - 24}} - {{25*p}} of {{totalNum}}</span>
+            <pagination-controls style='float: right; font-size: 12px;' (pageChange)="p = $event" nextLabel = 'Next Page' previousLabel='Previous page'></pagination-controls>
+
+            <table class="table table-striped" >
+         <thead >
+         <tr>
+             <th style="width: 10%">
+                 Sensor Name
+             </th>
+             <th style="width: 10%">
+                 Sensor ID
+             </th>
+             <th style="width: 15%">
+                 Status
+             </th>
+             <th style="width: 10%">On/Off</th>
+             <th style="width: 10%">Action</th>
+
+
+         </thead>
+         <tbody >
+             <tr *ngFor="let item of data | paginate : {itemsPerPage: 25, currentPage: p} ">
+                 <td>{{item.NAME}}</td>
+                 <td>{{item.NODE_NAME}}</td>
+                 <td>{{setStatus(item.STATUS)}}</td>
+                 <td>
+                     <span>
+                       <span *ngIf='item.loading'>{{item.idle_message}}</span>
+
+                         <toggle-switch
+                         *ngIf='!item.loading'
+                          [actionWhenOff] = 'stop.bind(this)'
+                          [actionWhenOn] = 'start.bind(this)'
+                          [toggled] = 'item.switch'
+                          [params]='item.NODE_NAME'
+                          on_text='On'
+                          off_text='Off'>
+                        </toggle-switch>
+                      </span>
+                    </td>
+                <td>
+                  <span
+                  *ngIf ='level == 0'>
+                  <a
+                  class='action'
+                  style='margin-right: 5px;'
+                  [routerLink]="['../edit-sensor/', item.NODE_NAME]">EDIT</a>
+                </span>
+                   <span *ngIf ='level == 0'> <a class='action' (click)='delete(item.NODE_NAME)'>DELETE</a></span></td>
+             </tr>
+         </tbody>
+         <tfoot>
+         <tr>
+             <td colspan="4">
+                 <pagination-controls style='float: right; font-size: 12px;' (pageChange)="p = $event" nextLabel = 'Next Page' previousLabel='Previous page'></pagination-controls>
+
+             </td>
+         </tr>
+         </tfoot>
+        </table>
+    </div>
+    </div>
+    </div>
+
+</div>
+<footerElement></footerElement>
+</div>

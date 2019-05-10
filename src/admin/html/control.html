@@ -1,0 +1,27 @@
+<headerElement></headerElement>
+<app-breadcrumb></app-breadcrumb>
+<div class="flex-wrapper">
+<div class="container-fluid table-style" >
+    <!-- <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2" style=" margin-left: auto; margin-right: auto; margin-top: 20px;"> -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    Service Settings
+                </div>
+            </div>
+            <div class="card-body">
+              <label class=" form-control-label">Sensor Mode</label>
+
+              <toggle-switch [actionWhenOn]= 'single.bind(this)' [actionWhenOff] = 'multiple.bind(this)' [toggled]='sensor_switch' on_text='Single Sensor' off_text='Multi Sensor'></toggle-switch>
+            <label class=" form-control-label">Service Controller</label>
+            <p ><span [style.color] = 'color' class="fa fa-circle"></span>{{status_message}}</p>
+            <span *ngIf='loading'>{{idle_message}}</span>
+            <toggle-switch *ngIf='!loading' [actionWhenOn]= 'start.bind(this)' [actionWhenOff] = 'stop.bind(this)' [toggled]='switch' on_text='Start' off_text='Stop'></toggle-switch>
+
+
+            </div>
+        </div>
+    <!-- </div> -->
+</div>
+<footerElement></footerElement>
+</div>
